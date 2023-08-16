@@ -1,7 +1,7 @@
 import express from 'express';
 import 'dotenv/config.js';
-import router from './routes/index.js';
-import errorHandler from './utils/errorHandler.js';
+import router from './src/routes/index.js';
+import errorHandler from './src/utils/errorHandler.js';
 import cors from 'cors';
 
 // Esta es nuestra aplicación

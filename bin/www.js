@@ -5,7 +5,7 @@
  */
 
 // var app = require('../app');
-import app from '../src/app.js'
+import app from '../app.js'
 // var debug = require('debug')('mytineraty:server');
 import logger from 'debug';
 const debug =logger('mytineraty:server');
