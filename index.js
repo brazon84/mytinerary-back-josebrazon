@@ -5,7 +5,7 @@
  */
 
 // var app = require('../app');
-import app from '../app.js'
+import app from './app.js'
 // var debug = require('debug')('mytineraty:server');
 import logger from 'debug';
 const debug =logger('mytineraty:server');
@@ -13,7 +13,7 @@ const debug =logger('mytineraty:server');
 import http from 'http'
 // !config mongoose
 import mongoose from 'mongoose';
-import connectDB from '../src/utils/connection.js';
+import connectDB from './src/utils/connection.js';
 
 connectDB();
 
