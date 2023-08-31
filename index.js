@@ -1,19 +1,11 @@
-#!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
-
-// var app = require('../app');
 import app from './app.js'
-// var debug = require('debug')('mytineraty:server');
 import logger from 'debug';
-const debug =logger('mytineraty:server');
-// var http = require('http');
 import http from 'http'
-// !config mongoose
 import mongoose from 'mongoose';
 import connectDB from './src/utils/connection.js';
+
+const debug =logger('mytineraty:server');
 
 connectDB();
 
@@ -27,32 +19,16 @@ mongoose.connection.on('error', err => {
 
 
 
-/**
- * Get port from environment and store in Express.
- */
-
-// *******!cambiamos las variables declaradas en var por const*******//
-
 const port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
 
 const server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
 
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
 
 function normalizePort(val) {
   const port = parseInt(val, 10);
@@ -70,9 +46,6 @@ function normalizePort(val) {
   return false;
 }
 
-/**
- * Event listener for HTTP server "error" event.
- */
 
 function onError(error) {
   if (error.syscall !== 'listen') {
@@ -83,7 +56,6 @@ function onError(error) {
     ? 'Pipe ' + port
     : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
@@ -97,10 +69,6 @@ function onError(error) {
       throw error;
   }
 }
-
-/**
- * Event listener for HTTP server "listening" event.
- */
 
 function onListening() {
   const addr = server.address();

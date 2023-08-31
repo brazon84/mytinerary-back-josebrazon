@@ -18,8 +18,12 @@ const citySchema = new Schema({
         type: String,
         required: true
     },
+    itineratyID: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Itineraty'
+    }],
+   
 });
 
-const city =mongoose.model('city', citySchema);
+const city =mongoose.model('City', citySchema);
 
 export default city
