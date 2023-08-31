@@ -5,7 +5,7 @@ import catchError from '../utils/catchError.js';
 
 
 const getAll = catchError(async (req, res) => {
-    const cities = await City.find().populate('itineratyID');
+    const cities = await City.find().populate('itinerries').populate({path:'itineraries', populate: 'activities'});
     return res.json(cities);
 });
 const create = catchError(async (req, res) => {
