@@ -4,7 +4,7 @@ import City from '../models/City.js';
 import Activity from '../models/Activity.js';
 
 const getAll = catchError(async (req, res) => {
-    const itineraries = await Itineraty.find().populate(['cityID', 'activityID']);
+    const itineraries = await Itineraty.find().populate('cityID', 'activityID');
     return res.json(itineraries);
 });
 const create = catchError(async (req, res) => {
