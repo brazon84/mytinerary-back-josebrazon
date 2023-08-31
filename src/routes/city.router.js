@@ -1,5 +1,5 @@
-import { getAll, create, getOne, addItineraryToCity, addActivityToCity, remove, update } from '../controllers/city.controllers.js';
-import express  from 'express';
+import { getAll, getItineraty, getActivity, create, getOne,  remove, update } from '../controllers/city.controllers.js';
+import express from 'express';
 
 const cityRouter = express.Router();
 
@@ -11,10 +11,15 @@ cityRouter.route('/:id')
     .get(getOne)
     .delete(remove)
     .put(update);
-    // Ruta para agregar un itinerario a una ciudad
-cityRouter.post('/:cityId/add-itinerary/:itineraryId', addItineraryToCity);
 
-// Ruta para agregar una actividad a una ciudad
-cityRouter.post('/:cityId/add-activity/:activityId', addActivityToCity);
+cityRouter.route('/:cityId/:itineratyID')
+    .get(getItineraty);
+
+    cityRouter.route('/:cityId/:itineratyID/:activityID')
+    .get(getActivity);
+
+
+
+
 
 export default cityRouter;

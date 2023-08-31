@@ -21,7 +21,9 @@ const citySchema = new Schema({
     itineratyID: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Itineraty'
     }],
-   
+   activityID: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Activity'
+    }],
 });
 
 const city =mongoose.model('City', citySchema);

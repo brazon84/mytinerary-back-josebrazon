@@ -1,6 +1,5 @@
 import City from '../models/City.js'
 import Itineraty from '../models/Itineraty.js';
-import Activity from '../models/Activity.js';
 import catchError from '../utils/catchError.js';
 
 
@@ -8,6 +7,27 @@ const getAll = catchError(async (req, res) => {
     const cities = await City.find().populate('itineratyID').populate({path:'itineratyID', populate: 'activityID'});
     return res.json(cities);
 });
+
+const getItineraty = catchError(async (req, res) => {
+    const { cityId } = req.params;
+    const city = await City.findById(cityId).populate('itineratyID');
+    
+    if (!city) {
+        return res.status(404).json();
+    }
+    return res.status(200).json(city.itineratyID);
+});
+
+const getActivity = catchError(async (req, res) => {
+    const { cityId } = req.params;
+    const city = await City.findById(cityId).populate('activityID');
+    
+    if (!city) {
+        return res.status(404).json();
+    }
+    return res.status(200).json(city.activityID);
+});
+
 const create = catchError(async (req, res) => {
     const { city, url, country, description, itineratyID, } = req.body;
     const cities = await City.create({ city, url, country, description, itineratyID });
@@ -21,31 +41,7 @@ const getOne = catchError(async (req, res) => {
     const cities = await City.findById(id);
     return res.json(cities);
 });
-const addItineraryToCity = catchError(async (req, res) => {
-    const { cityId, itineratyId } = req.params;
-    const city = await City.findById(cityId);
-    const itineraty = await Itineraty.findById(itineratyId);
-    if (!city || !itineraty) {
-        return res.status(404).json();
-    }
-    city.itineraries.push(itineraty);
-    await city.save();
-    return res.status(200).json();
 
-});
-
-const addActivityToCity = catchError(async (req, res) => {
-    const { cityId, activityId } = req.params;
-    const city = await City.findById(cityId);
-    const activity = await Activity.findById(activityId);
-    if (!city || !activity) {
-        return res.status(404).json();
-    }
-    city.activities.push(activity);
-    await city.save();
-    return res.status(200).json();
-
-});
 const remove = catchError(async (req, res) => {
     const { id } = req.params;
     await City.findByIdAndDelete(id);
@@ -58,4 +54,4 @@ const update = catchError(async (req, res) => {
     return res.json(cities);
 })
 
-export { getAll, create, getOne, addItineraryToCity, addActivityToCity, remove, update }
+export { getAll, getItineraty, getActivity, create, getOne,  remove, update }
