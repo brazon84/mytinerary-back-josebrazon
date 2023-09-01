@@ -9,8 +9,8 @@ const getAll = catchError(async (req, res) => {
 });
 
 const create = catchError(async (req, res) => {
-    const { userName, photoUser, price, duration, cityID, activityID} = req.body;
-    const itineraries = await Itineraty.create({ userName, photoUser, price, duration, cityID, activityID });
+    const { userName, photoUser, price, duration, like, hashtag, images, cityID, activityID} = req.body;
+    const itineraries = await Itineraty.create({ userName, photoUser, price, duration, like, hashtag, images, cityID, activityID });
     const cityId = await City.findById(cityID);
     cityId.itineratyID.push(itineraries);
     await cityId.save();
@@ -31,8 +31,8 @@ const remove = catchError(async (req, res) => {
 });
 const update = catchError(async (req, res) => {
     const { id } = req.params;
-    const { userName, photoUser, price, duration, cityID, activityID } = req.body;
-    const itineraries = await Itineraty.findByIdAndUpdate(id, { userName, photoUser, price, duration,cityID, activityID }, { returnDocument: 'after' },)
+    const { userName, photoUser, price, duration, like, hashtag, images, cityID, activityID } = req.body;
+    const itineraries = await Itineraty.findByIdAndUpdate(id, { userName, photoUser, price, duration, like, hashtag, images, cityID, activityID }, { returnDocument: 'after' },)
     return res.json(itineraries);
 })
 

@@ -22,6 +22,14 @@ const itineratySchema = new Schema({
         type: Number,
         required: true
     },
+    likes: {
+        type: Number,
+        default: 0,
+      },
+      hashtag: [
+       String
+      ],
+      images: [String],
     activityID: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Activity',
     }],

@@ -8,8 +8,8 @@ const getAll = catchError(async (req, res) => {
     return res.json(activities);
 });
 const create = catchError(async (req, res) => {
-    const { like, hashtag, images, comment, cityID } = req.body;
-    const activities = await Activity.create({ like, hashtag, images, comment, cityID });
+    const {  comment, cityID } = req.body;
+    const activities = await Activity.create({  comment, cityID });
     return res.status(201).json(activities);
 });
 const getOne = catchError(async (req, res) => {
@@ -24,8 +24,8 @@ const remove = catchError(async (req, res) => {
 });
 const update = catchError(async (req, res) => {
     const { id } = req.params;
-    const { like, hashtag, images, comment, cityID } = req.body;
-    const activities = await City.findByIdAndUpdate(id, { like, hashtag, images, comment, cityID }, { returnDocument: 'after' },)
+    const { comment, cityID } = req.body;
+    const activities = await City.findByIdAndUpdate(id, { comment, cityID }, { returnDocument: 'after' },)
     return res.json(activities);
 })
 
