@@ -1,4 +1,4 @@
-import { getAll, getItineraty, getActivity, create, getOne,  remove, update } from '../controllers/city.controllers.js';
+import { getAll, getItineraty, getActivity, create, getOne, remove, update } from '../controllers/city.controllers.js';
 import express from 'express';
 
 const cityRouter = express.Router();
@@ -15,7 +15,7 @@ cityRouter.route('/:id')
 cityRouter.route('/:cityId/:itineratyID')
     .get(getItineraty);
 
-    cityRouter.route('/:cityId/:itineratyID/:activityID')
+cityRouter.route('/:cityId/:itineratyID/:activityID')
     .get(getActivity);
 
 
