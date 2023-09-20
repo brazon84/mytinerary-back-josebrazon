@@ -11,8 +11,11 @@ const getAll = catchError(async (req, res) => {
     return res.json(user);
 });
 const create = catchError(async (req, res) => {
-    validateUserData(req, res)
-    const users = await Users.create(req.body);
+    const { firstName, lastName, email, password} = req.body;
+    // validateUserData(req, res)
+    console.log(req.body)
+
+    const users = await Users.create({ firstName, lastName, email, password});
     return res.status(201).json(users);
 });
 const getOne = catchError(async (req, res) => {

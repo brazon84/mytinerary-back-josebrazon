@@ -11,7 +11,12 @@ app.use(cors());
 // Middlewares 
 app.use(express.json());
 
-
+// app.post("/api", (req, res) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//   });
+//   app.get("/api", (req, res) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//   });
 // rutas
 app.use(router);
 

@@ -27,7 +27,7 @@ const usersSchema = new Schema({
     },
     country:{
         type:String,
-        required:true
+     
     }
 });
 

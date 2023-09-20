@@ -1,4 +1,4 @@
-const errorHandler = (error, _req, res, _next) => {
+const errorHandler = (error, _req, res, next) => {
     if (error.name === "ValidationError") {
         let errors = {};
 
